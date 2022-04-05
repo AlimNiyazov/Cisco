@@ -24,8 +24,24 @@ Vlan-Лабораторная работа №1
 Отключение поиска DNS
 Создание баннера
 
+enable secret Cisco
+Router(config) # line console 0
+Router(config-line) # login
+Router(config-line) # password Cisco 
+
+Router(config) # line aux 0
+Router(config-line) # login
+Router(config-line) # password Cisco 
+
+Router0(config) # line vty 0 4
+Router0(config-line) # login
+Router0(config-line) # password Cisco 
+
 hostname R1
+
+
 ![alt text](R1.JPG)
+
 
 Настроим основные параметры для коммутатора:
 
