@@ -104,8 +104,11 @@ interface Vlan4
 interface Vlan7
  no ip address
 !
-banner motd "Attention!!! Unauthorized access is prohibited!!!"
+banner motd "Attention! Unauthorized access is prohibited!"
 !
+
+
+![alt text](S2.JPG)
 
 3. Настройка магистрали 802.1Q между коммутаторами
 
@@ -120,6 +123,11 @@ switchport trunk native vlan 8
 switchport trunk allowed vlan 3-4,8
 
 switchport mode trunk
+
+
+
+![alt text](S1.JPG)
+
 
 Осуществляем проверку командой “show interfaces trunk”.
 
@@ -163,11 +171,12 @@ interface GigabitEthernet0/0/1.8
 interface Vlan1
  no ip address
  shutdown
-!
-ip classless
-!
-ip flow-export version 9
-!
+
+
+
+
+
+
 Проверяем командой “show ip interface brief”
 
 Interface              IP-Address      OK? Method Status                Protocol 
