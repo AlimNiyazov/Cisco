@@ -46,47 +46,12 @@ hostname R1
 Настроим основные параметры для коммутатора:
 
 
-
-hostname S2
-
-!
-
-enable secret 5 $1$mERr$hx5rVt7rPNoS4wqbXKX7m0
-
-enable password 7 0822455D0A16
-
-no ip domain-lookup
-
-!
-
-banner motd "Attention!!! Unauthorized access is prohibited!!!"
-
-line con 0
-
-` `password 7 0822455D0A16
-
-` `login
-
-!
-
-line vty 0 4
-
-` `password 7 0822455D0A16
-
-` `login
-
-line vty 5 15
-
-` `password 7 0822455D0A16
-
-` `login
-
-!
 Настройка хостов ПК: Настраиваем по таблице
 
 PC-A    NIC 192.168.3.3 255.255.255.0   192.168.3.1
 
 PC-B    NIC 192.168.4.3 255.255.255.0   192.168.4.1
+
 2. Создание виртуальных локальных сетей и назначение портов коммутатора
 
 Создаем VLAN, как указано в таблице на обоих коммутаторах.
@@ -206,25 +171,11 @@ GigabitEthernet0/0/1.3 192.168.3.1     YES manual up                    up
 GigabitEthernet0/0/1.4 192.168.4.1     YES manual up                    up 
 GigabitEthernet0/0/1.8 unassigned      YES unset  up                    up 
 Vlan1                  unassigned      YES unset  administratively down down
+
+
 5. Проверка работы маршрутизации между VLAN
 
 Проверка связи с PC-A на шлюз по умолчанию.
 Пинг с PC-A на PC-B
 Пинг с PC-A на S2
-Ping
 
-Итоговая схема подключения:
-Schema
-
-© 2022 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
