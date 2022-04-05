@@ -55,15 +55,21 @@ PC-B    NIC 192.168.4.3 255.255.255.0   192.168.4.1
 2. Создание виртуальных локальных сетей и назначение портов коммутатора
 
 Создаем VLAN, как указано в таблице на обоих коммутаторах.
+
 Назначаем VLAN соответствующему интерфейсу.
+
 Устанавливаем шлюз по умолчанию
+
 Проверяем, что Vlan назначены правильным интерфейсам
+
 VLAN	Name	Interface Assigned
+
 3	Management	S1: VLAN 3, S2: VLAN 3, S1: F0/6
 4	Operations	S2: F0/18
 7	ParkingLot	S1: F0/2-4, F0/7-24, G0/1-2, S2: F0/2-17, F0/19-24, G0/1-2
 8	Native	N/A
-Конфиг S2:
+
+Конфиг S2: 
 
 interface FastEthernet0/23
  switchport access vlan 7
@@ -178,4 +184,9 @@ Vlan1                  unassigned      YES unset  administratively down down
 Проверка связи с PC-A на шлюз по умолчанию.
 Пинг с PC-A на PC-B
 Пинг с PC-A на S2
+
+
+![alt text](ping PC-A.JPG)
+
+![alt text](ping PC-B.JPG)
 
