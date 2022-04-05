@@ -186,7 +186,7 @@ Vlan1                  unassigned      YES unset  administratively down down
 Пинг с PC-A на S2
 
 
-![alt text](ping PC-A.JPG)
+![alt text](pingPC-A.JPG)
 
-![alt text]ping PC-B.JPG)
+![alt text](pingPC-B.JPG)
 
