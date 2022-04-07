@@ -63,20 +63,20 @@ hostname R1
 
 **2. Создание виртуальных локальных сетей и назначение портов коммутатора**
 
-Создаем VLAN, как указано в таблице на обоих коммутаторах.
+Создаем VLAN, как указано в таблице на обоих коммутаторах.  
 
-Назначаем VLAN соответствующему интерфейсу.
+Назначаем VLAN соответствующему интерфейсу.  
 
-Устанавливаем шлюз по умолчанию
+Устанавливаем шлюз по умолчанию  
 
-Проверяем, что Vlan назначены правильным интерфейсам
+Проверяем, что Vlan назначены правильным интерфейсам  
 
-VLAN	Name	Interface Assigned
+VLAN	Name	Interface Assigned  
 
-` `	Management	S1: VLAN 3, S2: VLAN 3, S1: F0/6
-` `	Operations	S2: F0/18
-` `	ParkingLot	S1: F0/2-4, F0/7-24, G0/1-2, S2: F0/2-17, F0/19-24, G0/1-2
-` `	Native	N/A
+` `	Management	S1: VLAN 3, S2: VLAN 3, S1: F0/6  
+` `	Operations	S2: F0/18  
+` `	ParkingLot	S1: F0/2-4, F0/7-24, G0/1-2, S2: F0/2-17, F0/19-24, G0/1-2  
+` `	Native	N/A  
 
 ```
 Конфиг S2: 
@@ -131,13 +131,13 @@ banner motd "Attention! Unauthorized access is prohibited!"
 ```
 !
 
-interface FastEthernet0/1
+interface FastEthernet0/1  
 
-switchport trunk native vlan 8
+switchport trunk native vlan 8  
 
-switchport trunk allowed vlan 3-4,8
+switchport trunk allowed vlan 3-4,8  
 
-switchport mode trunk
+switchport mode trunk  
 
 ```
 
@@ -148,11 +148,11 @@ switchport mode trunk
 
 **Настройка маршрутизации между VLAN на маршрутизаторе**
 
-Активируем интерфейс G0/0/1 на маршрутизаторе  
-Настраиваем подинтерфейсы Vlan, как в таблице  
-Проверяем работоспособность подинтерфейсов  
+` `Активируем интерфейс G0/0/1 на маршрутизаторе  
+` `Настраиваем подинтерфейсы Vlan, как в таблице  
+` `Проверяем работоспособность подинтерфейсов  
 Таблица:  
-
+```
 Device	Interface	IP Address	Subnet Mask	Default Gateway
 R1	G0/0/1.3	192.168.3.1	255.255.255.0	N/A
 R1	G0/0/1.4	192.168.4.1	255.255.255.0	N/A
@@ -187,30 +187,31 @@ interface Vlan1
  no ip address
  shutdown
 
+```
 
 
 
 
+` `Проверяем командой “show ip interface brief”
+```
+Interface              IP-Address      OK? Method Status                Protocol   
+GigabitEthernet0/0/0   unassigned      YES NVRAM  administratively down down   
+GigabitEthernet0/0/1   unassigned      YES NVRAM  up                    up   
+GigabitEthernet0/0/1.3 192.168.3.1     YES manual up                    up   
+GigabitEthernet0/0/1.4 192.168.4.1     YES manual up                    up   
+GigabitEthernet0/0/1.8 unassigned      YES unset  up                    up   
+Vlan1                  unassigned      YES unset  administratively down down  
+```
 
-Проверяем командой “show ip interface brief”
+**5. Проверка работы маршрутизации между VLAN**
 
-Interface              IP-Address      OK? Method Status                Protocol 
-GigabitEthernet0/0/0   unassigned      YES NVRAM  administratively down down 
-GigabitEthernet0/0/1   unassigned      YES NVRAM  up                    up 
-GigabitEthernet0/0/1.3 192.168.3.1     YES manual up                    up 
-GigabitEthernet0/0/1.4 192.168.4.1     YES manual up                    up 
-GigabitEthernet0/0/1.8 unassigned      YES unset  up                    up 
-Vlan1                  unassigned      YES unset  administratively down down
+- Проверка связи с PC-A на шлюз по умолчанию.  
+- Пинг с PC-A на PC-B  
+- Пинг с PC-A на S2  
 
 
-5. Проверка работы маршрутизации между VLAN
-
-Проверка связи с PC-A на шлюз по умолчанию.
-Пинг с PC-A на PC-B
-Пинг с PC-A на S2
+![alt text](pingPC-A.JPG)  
 
 
-![alt text](pingPC-A.JPG)
-
-![alt text](pingPC-B.JPG)
+![alt text](pingPC-B.JPG)  
 
